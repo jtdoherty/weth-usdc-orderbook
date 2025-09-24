@@ -45,6 +45,11 @@ async def connect():
                             } if top_ask[0] is not None else None
                         }
 
+                        # Write orderbook to order.json
+                        with open('order.json', 'a') as f:
+                            json.dump(orderbook, f, indent=2)
+                            f.write('\n')  # Add newline for readability
+
                         # Print structured orderbook
                         print("\nWETH/USDC Orderbook:")
                         print(f"Last Update: {orderbook['last_update_ts']}")
